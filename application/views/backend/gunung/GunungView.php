@@ -75,7 +75,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title"><?=$title?>
-                    <a href="<?php echo base_url('/form/tambah'); ?>" class="float-xl-right"><i class="fa fa-plus"></i></a>
+                    <a href="<?=site_url($url.'/form/tambah')?>" class="float-xl-right"><i class="fa fa-plus"></i></a>
                     
 <hr>
 
@@ -83,8 +83,12 @@
 	<thead>
 		<tr>
 			<th>No</th>
-			<th>Kode</th>
 			<th>Nama Gunung</th>
+			<th>Lokasi</th>
+      <th>Keterangan</th>
+			<th>latitude</th>
+      <th>Longitude</th>
+			<th>Status</th>
 			<th>GeoJSON</th>
 			<!-- <th>Warna</th> -->
 			<th>Aksi</th>
@@ -97,8 +101,12 @@
 				?>
 					<tr>
 						<td><?=$no?></td>
-						<td><?=$row->kd_gunung?></td>
 						<td><?=$row->nm_gunung?></td>
+            <td><?=$row->lokasi?></td>
+            <td><?=$row->keterangan?></td>
+            <td><?=$row->lat?></td>
+            <td><?=$row->lng?></td>
+            <td class="text-center"><?=($row->status==''?'-':'<img src="'.assets('unggah/status/'.$row->status).'" width="40px">')?></td>
 						<td><a href="<?=assets('unggah/geojson/'.$row->geojson_gunung)?>" target="_BLANK"><?=$row->geojson_gunung?></a></td>
 						
 						<!-- <td style="background: <?=$row->warna_gunung?>"></td> -->

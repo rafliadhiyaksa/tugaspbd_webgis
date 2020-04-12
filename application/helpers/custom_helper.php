@@ -38,7 +38,7 @@ function content_close(){
 function assets($file=''){
     return base_url('assets/'.$file);
   }
-  function upload($name='file',$folder='geojson',$types="image"){
+  function upload($name='file',$folder='geojson,status',$types="image"){
     if($types=='image'){
       $allowed_types='gif|jpg|png';
       // $config['max_width']    = 1024;

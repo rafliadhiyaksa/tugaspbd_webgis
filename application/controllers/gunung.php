@@ -40,6 +40,11 @@ class gunung extends CI_Controller {
 			$data=[
 				'kd_gunung'=>$this->input->post('kd_gunung'),
 				'nm_gunung'=>$this->input->post('nm_gunung'),
+				'lokasi'=>$this->input->post('lokasi'),
+				'keterangan'=>$this->input->post('keterangan'),
+				'lat'=>$this->input->post('lat'),
+				'lng'=>$this->input->post('lng'),
+				
 				// 'warna_gunung'=>$this->input->post('warna_gunung'),
 			];
 			// upload
@@ -57,6 +62,21 @@ class gunung extends CI_Controller {
 					exit();
 				}
 			}
+			if($_FILES['status']['name']!=''){
+				$upload=upload('status','status','image');
+				if($upload['info']==true){
+					$data['status']=$upload['upload_data']['file_name'];
+				}
+				elseif($upload['info']==false){
+					$info='<div class="alert alert-danger alert-dismissible">
+	            		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	            		<h4><i class="icon fa fa-ban"></i> Error!</h4> '.$upload['message'].' </div>';
+					$this->session->set_flashdata('info',$info);
+					redirect('gunung');
+					exit();
+				}
+			}
+
 			// upload
 			
 			if($_POST['parameter']=="tambah"){

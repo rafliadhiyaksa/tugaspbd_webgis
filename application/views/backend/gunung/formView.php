@@ -3,6 +3,11 @@ $id_gunung="";
 $kd_gunung="";
 $nm_gunung="";
 $geojson_gunung="";
+$lokasi="";
+$keterangan="";
+$lat="";
+$lng="";
+$status="";
 if($parameter=='ubah' && $id!=''){
     $this->db->where('id_gunung',$id);
     $row=$this->Model->get()->row_array();
@@ -107,6 +112,59 @@ if($parameter=='ubah' && $id!=''){
 	    		</div>
     		</div>
     	</div>
+		<div class="form-group">
+    		<label>Lokasi</label>
+    		<div class="row">
+	    		<div class="col-md-6">
+	    			<?=input_text('lokasi',$lokasi)?>
+	    		</div>
+    		</div>
+    	</div>
+		<div class="form-group">
+    		<label>Keterangan</label>
+    		<div class="row">
+	    		<div class="col-md-6">
+	    			<?=input_text('keterangan',$keterangan)?>
+	    		</div>
+    		</div>
+    	</div>
+		<div class="form-group">
+    		<label>Latitude</label>
+    		<div class="row">
+	    		<div class="col-md-6">
+	    			<?=input_text('lat',$lat)?>
+	    		</div>
+    		</div>
+    	</div>
+		<div class="form-group">
+    		<label>Longitude</label>
+    		<div class="row">
+	    		<div class="col-md-6">
+	    			<?=input_text('lng',$lng)?>
+	    		</div>
+    		</div>
+    	</div>
+		<div class="form-group">
+    		<label>Gambar Status</label>
+    		<div class="row">
+	    		<div class="col-md-4">
+    				<?=input_file('status','')?>
+					<?php if ($parameter=='ubah'): ?>
+                        <small class="text-success">Biarkan kosong jika tidak ingin diubah</small>
+                    <?php endif ?>
+    			</div>
+    		</div>
+    	</div>
+		<!-- <div class="form-group">
+    		<label>Gambar Status</label>
+    		<div class="row">
+	    		<div class="col-md-4">
+    				<?=input_file('status',$status)?>
+                    <?php if ($parameter=='ubah'): ?>
+                        <small class="text-success">Biarkan kosong jika tidak ingin diubah</small>
+                    <?php endif ?>
+    			</div>
+    		</div> -->
     	<div class="form-group">
     		<label>GeoJSON</label>
     		<div class="row">
