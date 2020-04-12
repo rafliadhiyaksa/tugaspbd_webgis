@@ -31,6 +31,8 @@ class Admin extends CI_Controller {
 	}
 
 
+
+
 	public function add()
 	{
 	  // Jika form di submit jalankan blok kode ini
@@ -179,4 +181,5 @@ class Admin extends CI_Controller {
     redirect('admin/data_akun', 'refresh');
   }
 
+  
 }

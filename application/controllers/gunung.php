@@ -5,6 +5,12 @@ class gunung extends CI_Controller {
     public function __construct(){
 		parent::__construct();
 		$this->load->model('GunungModel','Model');
+		if(empty($this->session->userdata('id'))){
+			redirect('login/admin');
+		}
+		$this->load->model('m_admin');
+		$this->load->model('m_akun');
+
 	}
     
 	public function index() 

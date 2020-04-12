@@ -40,7 +40,7 @@
             <div class="collapse" id="maps">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?=site_url('gunung')?>">Table Maps</a></li>
-                <li class="nav-item"> <a class="nav-link" href="">Maps View</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?=site_url('maps')?>">Maps View</a></li>
               </ul>
             </div>
           </li>
