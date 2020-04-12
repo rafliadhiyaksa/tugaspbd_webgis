@@ -1,5 +1,12 @@
 <?php $this->load->view('backend/header') ?>
 
+<!-- <style type="text/css">
+    .navbar .navbar-brand-wrapper{
+      background: #01595A;
+    }
+  </style> -->
+
+
 
 <body>
   <div class="container-scroller">
@@ -58,7 +65,7 @@
         <div class="content-wrapper">
           <div class="row">
             <div class="col-sm-12 mb-4 mb-xl-0">
-              <h4 class="font-weight-bold text-dark"><?=$title?></h4>
+              <h4 class="font-weight-bold text-dark"><?=$title1?></h4>
               <p class="font-weight-normal mb-2 text-muted">APRIL 1, 2019</p>
             </div>
           </div>
@@ -67,15 +74,19 @@
               <div class="col-xl-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title"><?=$title?></h4>
-                    <table class="table table-bordered">
+                    <h4 class="card-title"><?=$title?>
+                    <a href="<?php echo base_url('/form/tambah'); ?>" class="float-xl-right"><i class="fa fa-plus"></i></a>
+                    
+<hr>
+
+                    <table class="table table-stripped">
 	<thead>
 		<tr>
 			<th>No</th>
 			<th>Kode</th>
-			<th>Nama Kecamatan</th>
+			<th>Nama Gunung</th>
 			<th>GeoJSON</th>
-			<th>Warna</th>
+			<!-- <th>Warna</th> -->
 			<th>Aksi</th>
 		</tr>
 	</thead>
@@ -86,14 +97,16 @@
 				?>
 					<tr>
 						<td><?=$no?></td>
-						<td><?=$row->kd_kecamatan?></td>
-						<td><?=$row->nm_kecamatan?></td>
-						<td><a href="<?=assets('unggah/geojson/'.$row->geojson_kecamatan)?>" target="_BLANK"><?=$row->geojson_kecamatan?></a></td>
+						<td><?=$row->kd_gunung?></td>
+						<td><?=$row->nm_gunung?></td>
+						<td><a href="<?=assets('unggah/geojson/'.$row->geojson_gunung)?>" target="_BLANK"><?=$row->geojson_gunung?></a></td>
 						
-						<td style="background: <?=$row->warna_kecamatan?>"></td>
+						<!-- <td style="background: <?=$row->warna_gunung?>"></td> -->
 						<td>
-							<a href="<?=site_url($url.'/form/ubah/'.$row->id_kecamatan)?>" class="btn btn-info"><i class="fa fa-edit"></i> Ubah</a>
-							<a href="<?=site_url($url.'/hapus/'.$row->id_kecamatan)?>" class="btn btn-danger" onclick="return confirm('Hapus data?')"><i class="fa fa-trash"></i> Hapus</a>
+							<a href="<?=site_url($url.'/form/ubah/'.$row->id_gunung)?>" class="btn-floating" data-position="top"
+									><i class="material-icons">edit</i></a>
+							<a href="<?=site_url($url.'/hapus/'.$row->id_gunung)?>" class="btn-floating" data-position="top"
+									><i class="material-icons">delete</i></a>
 						</td>
 					</tr>
 				<?php

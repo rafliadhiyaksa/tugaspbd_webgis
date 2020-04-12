@@ -10,12 +10,70 @@ class gunung extends CI_Controller {
 	public function index() 
 	
 	{
-         $datacontent['url']='kecamatan';
-         $datacontent['title']='Halaman Kecamatan';
+         $datacontent['url']='gunung';
+         $datacontent['title1']='Tabel Maps';
 		 $datacontent['datatable']=$this->Model->get();
 		 $data['content']=$this->load->view('backend/gunung/GunungView',$datacontent,TRUE);
-		 $data['title']='Welcome  Guys';
+		 $data['title']='Tabel Daftar Gunung';
 		 $this->load->view('backend/gunung/GunungView',$data);
+	}
+	public function form($parameter='',$id='')
+	{
+		$datacontent['url']='gunung';
+		$datacontent['parameter']=$parameter;
+		$datacontent['id']=$id;
+		$datacontent['title']='Form Data Gunung';
+		$data['content']=$this->load->view('backend/gunung/formView',$datacontent,TRUE);
+		$data['title']=$datacontent['title'];
+		$this->load->view('backend/gunung/formView',$data);
+	}
+
+	public function simpan()
+	{
+		if($this->input->post()){
+			$data=[
+				'kd_gunung'=>$this->input->post('kd_gunung'),
+				'nm_gunung'=>$this->input->post('nm_gunung'),
+				// 'warna_gunung'=>$this->input->post('warna_gunung'),
+			];
+			// upload
+			if($_FILES['geojson_gunung']['name']!=''){
+				$upload=upload('geojson_gunung','geojson','geojson');
+				if($upload['info']==true){
+					$data['geojson_gunung']=$upload['upload_data']['file_name'];
+				}
+				elseif($upload['info']==false){
+					$info='<div class="alert alert-danger alert-dismissible">
+	            		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	            		<h4><i class="icon fa fa-ban"></i> Error!</h4> '.$upload['message'].' </div>';
+					$this->session->set_flashdata('info',$info);
+					redirect('gunung');
+					exit();
+				}
+			}
+			// upload
+			
+			if($_POST['parameter']=="tambah"){
+				$this->Model->insert($data);
+			}
+			else{
+				$this->Model->update($data,['id_gunung'=>$this->input->post('id_gunung')]);
+			}
+
+		}
+
+		redirect('gunung');
+	}
+
+	public function hapus($id=''){
+		// hapus file di dalam folder
+		$this->db->where('id_gunung',$id);
+		$get=$this->Model->get()->row();
+		$geojson_gunung=$get->geojson_gunung;
+		unlink('assets/unggah/geojson/'.$geojson_gunung);
+		// end hapus file di dalam folder
+		$this->Model->delete(["id_gunung"=>$id]);
+		redirect('gunung');
 	}
     
 }
