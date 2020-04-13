@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		if(empty($this->session->userdata('id'))){
 			redirect('login/admin');
-		}
+		} 
 		$this->load->model('m_admin');
 		$this->load->model('m_akun');
 
@@ -22,12 +22,17 @@ class Admin extends CI_Controller {
 		$this->load->view('backend/index',$data);
 
 	}
+	
 
 	public function data_akun() {
-		$datacontent['akun'] = $this->m_akun->get()->result();
-		
-		$data['content'] = $this->load->view('backend/content/v_userlist',$datacontent,TRUE);
-		$this->load->view('backend/content/v_akun',$data);
+		if($this->session->userdata('role') == 'admin'){
+			$datacontent['akun'] = $this->m_akun->get()->result();
+			
+			$data['content'] = $this->load->view('backend/content/v_userlist',$datacontent,TRUE);
+			$this->load->view('backend/content/v_akun',$data);
+		} else {
+			redirect('admin');
+		}
 	}
 
 

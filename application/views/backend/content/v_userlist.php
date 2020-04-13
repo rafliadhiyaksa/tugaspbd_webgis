@@ -49,8 +49,8 @@
 				</div>
 				<?php endif; ?>
 				<table class="table table-striped">
-					<thead class="bg-primary">
-						<tr style="color: white">
+					<thead class="">
+						<tr style="">
 							<th>No</th>
 							<th>Nama</th>
 							<th>Username</th>

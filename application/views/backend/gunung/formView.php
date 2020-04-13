@@ -62,7 +62,7 @@ if($parameter=='ubah' && $id!=''){
               <a class="dropdown-item preview-item">               
                   <i class="icon-head"></i> Profile
               </a>
-              <a class="dropdown-item preview-item" href="logout/admin">
+              <a class="dropdown-item preview-item" href="<?php echo base_url(); ?>admin/logout">
                   <i class="icon-inbox"></i> Logout
               </a>
             </div>

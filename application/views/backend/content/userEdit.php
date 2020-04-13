@@ -28,7 +28,7 @@
 						</div>
 						<div class="form-group col-md-6">
 							<label for="username">Username</label>
-              <input id="username" name="username" type="text" value="<?php echo $user->username; ?>" class="form-control">
+              <input id="username" name="username"type="text" value="<?php echo $user->username; ?>" class="form-control">
 						</div>
             <div class="form-group col-md-6">
 							<label for="password">Password</label>

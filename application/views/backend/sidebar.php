@@ -2,7 +2,7 @@
 <nav class="sidebar sidebar-offcanvas fixed"  id="sidebar">
         <div class="user-profile">
           <div class="user-image">
-            <img src="template/regal/images/faces/face1.jpg">
+            <img src="<?php echo base_url(); ?>template/regal/images/faces/face1.jpg">
           </div>
 
           <div class="user-name">
@@ -23,12 +23,21 @@
           </li>
 
           <!-- ACCOUNT -->
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('admin/data_akun'); ?>">
-              <i class="icon-head menu-icon"></i>
+          <?php
+          if($this->session->userdata('role') == 'admin') {
+            echo '<li class="nav-item">
+            <a class="nav-link" href="';
+            echo base_url('admin/data_akun');
+            echo '">';
+            echo '<i class="icon-head menu-icon"></i>
               <span class="menu-title">Account Data</span>
             </a>
-          </li>
+          </li>';
+
+          }
+          
+          ?>
+
 
            <!-- Geo Maps -->
            <li class="nav-item">

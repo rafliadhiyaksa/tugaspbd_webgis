@@ -13,6 +13,12 @@ class Main extends CI_Controller {
 	{
 		$this->load->view('frontend/v_main');
 
-    }
+	} 
+	public function maps() {
+		
+
+		$data['content'] = $this->load->view('frontend/v_maps',NULL,TRUE);
+		$this->load->view('frontend/v_main',$data);
+	} 
 }
 ?>
