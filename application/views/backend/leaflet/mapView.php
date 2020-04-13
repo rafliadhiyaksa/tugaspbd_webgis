@@ -1,5 +1,7 @@
 <?php $this->load->view('backend/header') ?>
 
+
+
 <!-- <style type="text/css">
     .navbar .navbar-brand-wrapper{
       background: #01595A;
@@ -110,19 +112,24 @@
   ?>
 
 </body>
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="
-    sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin=""></script>
-   <script>
-   var mymap = L.map('mapid').setView([-0.281833, 115.504175], 5.4999);
-   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
-    }).addTo(mymap);
+<script typye="text/javascript">
+  var map = L.map('mapid').setView([-0.281833, 115.504175], 4.3);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+$.getJSON("<?=base_url()?>maps/gunung_json", function(data){
+    $.each(data, function(i, field){
+
+      var v_lat=parseFloat(data[i].lat);
+      var v_lng=parseFloat(data[i].lng);
+
+    L.marker([v_lng,v_lat]).addTo(map)
+    .bindPopup(data[i].nm_gunung)
+    .openPopup();
+    });
+  });
    </script>
 </html>
 

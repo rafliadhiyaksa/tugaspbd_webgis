@@ -17,5 +17,7 @@
 		<script src="<?php echo base_url('assets/materialize/js/materialize.js'); ?>"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
+    <script src="<?=base_url()?>assets/leaflet/leaflet.js" rel="stylesheet"> </script>
+
 
     

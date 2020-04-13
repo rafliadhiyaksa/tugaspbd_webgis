@@ -22,5 +22,11 @@ class maps extends CI_Controller {
          $data['content']=$this->load->view('backend/leaflet/mapView',$datacontent,TRUE);
 		 $data['title']='Map View';
 		 $this->load->view('backend/leaflet/mapView',$data);
-	}    
+	}
+	
+	public function gunung_json()
+ {
+   $data=$this->db->get('m_gunung')->result();
+   echo json_encode($data);
+ }
 }

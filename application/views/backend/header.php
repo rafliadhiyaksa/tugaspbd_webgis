@@ -30,5 +30,11 @@
     <link href="<?php echo base_url('template/regal/css/style.css') ?> " rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <head>
+    <link href="<?=base_url()?>assets/leaflet/leaflet.css" rel="stylesheet">
+
+
+
+</head>
     
   </head>

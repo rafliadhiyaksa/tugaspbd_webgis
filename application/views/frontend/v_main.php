@@ -1,13 +1,4 @@
 <!doctype html>
-<style type="text/css">
-
-  /* html { height: 100% }
-  body { height: 100%; margin: 0px; padding: 0px }
-  #mapid { height: 100% } */
-
-</style>
-
-
 <html lang="en">
 
 
@@ -21,6 +12,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="<?php echo base_url('assets/css/fontawesome.min.css') ?>" rel="stylesheet">
 	<link href="<?php echo base_url('assets/css/solid.min.css') ?>" rel="stylesheet">
+	<link href="<?=base_url()?>assets/leaflet/leaflet.css" rel="stylesheet">
+	
+
 </head>
 
 <body>
@@ -41,9 +35,8 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<a href="#" class="btn" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
-            
-          </div>
-          <?php $content?>
+						<?=$content?>
+          </div>		  
 				</div>
 				
 			</div>
@@ -71,13 +64,29 @@
 		});
 
 	</script>
-	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="
-    sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin="">
-	</script>
-	
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-					integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-					crossorigin="" />
+	<script src="<?=base_url()?>assets/leaflet/leaflet.js" rel="stylesheet"> </script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
 </body>
+<script type="text/javascript">
+  var map = L.map('mapid').setView([-0.281833, 115.504175], 5.0);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+$.getJSON("<?=base_url()?>main/gunung_json", function(data){
+    $.each(data, function(i, field){
+
+      var v_lat=parseFloat(data[i].lat);
+      var v_lng=parseFloat(data[i].lng);
+
+    L.marker([v_lng,v_lat]).addTo(map)
+    .bindPopup(data[i].nm_gunung)
+    .openPopup();
+    });
+  });
+   </script>
 
 </html>

@@ -32,7 +32,7 @@
               <a class="dropdown-item preview-item">               
                   <i class="icon-head"></i> Profile
               </a>
-              <a class="dropdown-item preview-item" href="<?php echo base_url(); ?>admin/logout">
+              <a class="dropdown-item preview-item" href="<?php echo base_url(); ?>logout/admin">
                   <i class="icon-inbox"></i> Logout
               </a>
             </div>
