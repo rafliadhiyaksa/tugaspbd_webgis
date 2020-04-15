@@ -2,9 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class GunungModel extends CI_Model{
-    function get(){
-        $data=$this->db->get('m_gunung');
-        return $data;
+    public function get(){
+        return $this->db->get('m_gunung');
     }
 
     function insert($data=array()) {

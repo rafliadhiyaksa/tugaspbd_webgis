@@ -1,83 +1,65 @@
-<!-- 
-  <!DOCTYPE html>
-  <html>
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card mb-0">
-      <div class="card-body pt-0">
-        <form>
-          <div class="row justify-content-center">
-            <div class="col-9 col-sm-4 pr-0">
-              <div class="form-group bmd-form-group">
-                <label class="bmd-label-floating">Cari Akun</label>
-                <div class="input-group">
-                  <input type="text" id="filter-cari" class="form-control">
-                </div>
-              </div>
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<!-- Card header -->
+			<div class="card-header border-0">
+				<h3 class="mb-0"><?=$accountdata?>
+				<div class="col-lg-6 col-5 text-right mb-0 float-xl-right">
+              <a href="<?php echo base_url('admin/add'); ?>" class="btn btn-sm btn-neutral"><i
+							class="fa fa-plus"></i> Add</a>
             </div>
-            <div class="col-auto pl-0 col-sm-auto">
-              <div class="form-group mb-0 pb-0" style="margin-top: 20px">
-                <button class="btn btn-white btn-round btn-just-icon" type="button" data-toggle="tooltip" data-placement="top" title="Halaman selanjutnya">
-                  <i class="material-icons">search</i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div> -->
+				</h3>
+			</div>
 
+			<!-- Light table -->
 
+			<div class="table-responsive">
+				<table class="table align-items-center table-flush">
 
-
-
-<div class="col-lg-12 grid-margin stretch-card">
-	<div class="card">
-		<div class="card-body">
-			<span class="card-title">Account Data</span>
-
-			<a href="<?php echo base_url('admin/add'); ?>" class="float-xl-right"><i class="fa fa-plus"></i></a>
-			<p class="card-description">
-                    Data Akun
-                  </p>
-			<div class="card-content">
-				<?php if($message = $this->session->flashdata('message')): ?>
-				<div class="col s12">
-					<div class="card-panel <?php echo ($message['status']) ? 'green' : 'red'; ?>">
-						<span class="white-text"><?php echo $message['message']; ?></span>
-					</div>
-				</div>
-				<?php endif; ?>
-				<table class="table table-striped">
-					<thead class="">
-						<tr style="">
-							<th>No</th>
-							<th>Nama</th>
-							<th>Username</th>
-							<th>Role</th>
-							<th class="center-align">Action</th>
+					<thead class="thead-light">
+						<tr>
+							<th style="text-align:center; font-weight:bold; "><h4>No</h4></th>
+							<th style="text-align:center; font-weight:bold"><h4>Nama</h4></th>
+							<th style="text-align:center; font-weight:bold"><h4>Username</h4></th>
+							<th style="text-align:center; font-weight:bold"><h4>Role</h4></th>
+							<th style="text-align: center; font-weight:bold"><h4>Action</h4></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php $no = 0; foreach($akun as $row): ?>
 						<tr>
-							<td><?php echo ++$no; ?></td>
-							<td><?php echo $row->nama; ?></td>
-							<td><?php echo $row->username; ?></td>
-							<td><?php echo $row->role; ?></td>
-							<td class="center-align">
-								<a href="<?php echo base_url('admin/edit/' . $row->id); ?>"
-									class="btn-floating" data-position="top"
-									><i class="material-icons">edit</i></a>
-								<a href="<?php echo base_url('admin/delete/' . $row->id); ?>"
-									class="btn-floating" data-position="top"
-									><i class="material-icons">delete</i></a>
+							<td style="text-align:center; font-weight:bold">
+								<div >
+									<span class="name mb-0 text-sm"><?php echo ++$no; ?></span>
+								</div>
+							</td>
+							<td style="text-align:center; font-weight:bold">
+								<div >
+									<span class="name mb-0 text-sm"><?php echo $row->nama; ?></span>
+								</div>
+							</td>
+							<td style="text-align:center; font-weight:bold">
+							<div >
+									<span class="name mb-0 text-sm"><?php echo $row->username; ?></span>
+								</div>
+							</td>
+							<td style="text-align:center; font-weight:bold">
+							<div >
+									<span class="name mb-0 text-sm"><?php echo $row->role; ?></span>
+								</div>
+								
+							</td>
+							<td style="text-align:center">
+							<a href="<?php echo base_url('admin/edit/' . $row->id); ?>" class="btn btn-sm btn-neutral"><i
+							class="fas fa-pencil-alt"></i> Edit</a>
+							<a href="<?php echo base_url('admin/delete/' . $row->id); ?>" class="btn btn-sm btn-neutral"><i
+							class="fas fa-trash-alt"></i> Delete</a>
+								
 							</td>
 						</tr>
 						<?php endforeach; ?>
 					</tbody>
-        </table>
-
+				</table>
 			</div>
 		</div>
 	</div>

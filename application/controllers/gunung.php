@@ -17,9 +17,9 @@ class gunung extends CI_Controller {
 	
 	{
          $datacontent['url']='gunung';
-         $datacontent['title1']='Tabel Maps';
+         $datacontent['title1']='MAPS DATA';
 		 $datacontent['datatable']=$this->Model->get();
-		 $data['content']=$this->load->view('backend/gunung/GunungView',$datacontent,TRUE);
+		 $data['content']=$this->load->view('backend/gunung/DataGunung',$datacontent,TRUE);
 		 $data['title']='Tabel Daftar Gunung';
 		 $this->load->view('backend/gunung/GunungView',$data);
 	}
@@ -28,7 +28,7 @@ class gunung extends CI_Controller {
 		$datacontent['url']='gunung';
 		$datacontent['parameter']=$parameter;
 		$datacontent['id']=$id;
-		$datacontent['title']='Form Data Gunung';
+		$datacontent['title']='FORM DATA GUNUNG';
 		$data['content']=$this->load->view('backend/gunung/formView',$datacontent,TRUE);
 		$data['title']=$datacontent['title'];
 		$this->load->view('backend/gunung/formView',$data);
@@ -100,6 +100,23 @@ class gunung extends CI_Controller {
 		// end hapus file di dalam folder
 		$this->Model->delete(["id_gunung"=>$id]);
 		redirect('gunung');
+	}
+
+	public function pdf() {
+		$this->load->library('dompdf_gen');
+
+		$data['gunung'] = $this->Model->get('m_gunung')->result();
+		$this->load->view('backend/gunung/datagunung_pdf', $data);
+
+		$paper_size = 'A4';
+		$orientation = 'landscape';
+		$html = $this->output->get_output();
+		$this->dompdf->set_paper($paper_size, $orientation);
+
+		$this->dompdf->load_html($html);
+		$this->dompdf->render();
+		$this->dompdf->stream("data_gunung.pdf", array('Attachment' => 0));
+
 	}
     
 }

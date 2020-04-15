@@ -1,56 +1,37 @@
 <?php $this->load->view('backend/header') ?>
 
-<!-- <style type="text/css">
-    .navbar .navbar-brand-wrapper{
-      background: #01595A;
-    }
-  </style> -->
-
-
-
 <body>
-  <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <?php $this->load->view('backend/navbar') ?>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
-      <?php $this->load->view('backend/sidebar') ?>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-sm-12 mb-4 mb-xl-0">
-              <h4 class="font-weight-bold text-dark"><?=$dashboard?></h4>
-              <p class="font-weight-normal mb-2 text-muted"><?php echo tanggal() ?></p>
-            </div>
-          </div>
-          
-          <div class="row">
-              <div class="col-xl-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title"><?=$dashboard?></h4>
-                    
-                  </div>
-                </div>
-              </div>
-          </div>
-          </div>
-        </div>
-        <!-- content-wrapper ends -->
+	<?php $this->load->view('backend/sidebar') ?>
+	<div class="main-content" id="panel">
+		<?php $this->load->view('backend/navbar') ?>
+		<div class="header bg-primary pb-6">
+			<div class="container-fluid">
+				<div class="header-body">
+					<div class="row align-items-center py-4">
+						<div class="col-lg-6 col-7">
+							<h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+							<nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+								<ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+									<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+									<li class="breadcrumb-item"><a href="#">Dashboards</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Default</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Page content -->
+		<div class="container-fluid mt--6">
+    
+          <?=$content?>
+			
+		</div>
 
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  
 
-  <?php $this->load->view('backend/footer') ?>
+		<?php $this->load->view('backend/footer') ?>
 
 </body>
 
 </html>
-

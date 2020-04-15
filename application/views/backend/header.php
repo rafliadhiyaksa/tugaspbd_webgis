@@ -1,40 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="template/regal/images/favicon.png" type="image/ico" />
+<html>
 
-    <title>ADMIN DASHBOARD</title>
-
-    <!-- Bootstrap -->
-    <link href="<?php echo base_url('template/regal/vendors/mdi/css/materialdesignicons.min.css') ?>" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="<?php echo base_url('template/regal/vendors/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<?php echo base_url('template/regal/vendors/feather/feather.css') ?>" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="<?php echo base_url('template/regal/vendors/base/vendor.bundle.base.css') ?>" rel="stylesheet">
-	
-    <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url('template/regal/vendors/flag-icon-css/css/flag-icon.min.css') ?>" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="<?php echo base_url('template/regal/vendors/jquery-bar-rating/fontawesome-stars-o.css') ?>" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="<?php echo base_url('template/regal/vendors/jquery-bar-rating/fontawesome-stars.css') ?>" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="<?php echo base_url('template/regal/css/style.css') ?> " rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <head>
-    <link href="<?=base_url()?>assets/leaflet/leaflet.css" rel="stylesheet">
-
-
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="Creative Tim">
+  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="<?php echo base_url('template/argon/assets/vendor/nucleo/css/nucleo.css') ?>" type="text/css">
+  <link rel="stylesheet" href="<?php echo base_url('template/argon/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') ?>" type="text/css">
+  <!-- Page plugins -->
+  <!-- Argon CSS -->
+  
+  <link rel="stylesheet" href="<?php echo base_url('template/argon/assets/css/argon.css?v=1.2.0') ?>" type="text/css">
+  <link href="<?=base_url()?>assets/leaflet/leaflet.css" rel="stylesheet">
 </head>
-    
-  </head>

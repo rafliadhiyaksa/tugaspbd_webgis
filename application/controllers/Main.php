@@ -12,7 +12,9 @@ class Main extends CI_Controller {
 
 	public function index()
 	{
-		$data['content'] = $this->load->view('frontend/v_maps',NULL,TRUE);
+		$datacontent['datatable']=$this->model->get();
+
+		$data['content'] = $this->load->view('frontend/v_maps',$datacontent,TRUE);
 		$this->load->view('frontend/v_main',$data);
 
 	} 

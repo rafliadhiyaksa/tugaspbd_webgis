@@ -1,161 +1,95 @@
-<?php
-$id_gunung="";
-$kd_gunung="";
-$nm_gunung="";
-$geojson_gunung="";
-$lokasi="";
-$keterangan="";
-$lat="";
-$lng="";
-$status="";
-if($parameter=='ubah' && $id!=''){
-    $this->db->where('id_gunung',$id);
-    $row=$this->Model->get()->row_array();
-    extract($row);
-}
-?>
-
 <?php $this->load->view('backend/header') ?>
 
-<!-- <style type="text/css">
-    .navbar .navbar-brand-wrapper{
-      background: #01595A;
-    }
-  </style> -->
-
-
-
 <body>
-  <div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="admin"><img src="template/regal/images/logo.svg" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="admin "><img src="template/regal/images/logo-mini.svg" alt="logo"/></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="icon-menu"></span>
-        </button>
-        <ul class="navbar-nav mr-lg-2">
-          <li class="nav-item nav-search d-none d-lg-block">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="search">
-                  <i class="icon-search"></i>
-                </span>
-              </div>
-              <input type="text" class="form-control" placeholder="Search Projects.." aria-label="search" aria-describedby="search">
+	<?php $this->load->view('backend/sidebar') ?>
+	<div class="main-content" id="panel">
+		<?php $this->load->view('backend/navbar') ?>
+		<div class="header bg-primary pb-6">
+			<div class="container-fluid">
+				<div class="header-body">
+					<div class="row align-items-center py-4">
+						<div class="col-lg-6 col-7">
+							<h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+							<nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+								<ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+									<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+									<li class="breadcrumb-item"><a href="<?php base_url()?> admin">Admin</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Data Account</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Page content -->
+		<?php
+      $id_gunung="";
+      $kd_gunung="";
+      $nm_gunung="";
+      $geojson_gunung="";
+      $lokasi="";
+      $keterangan="";
+      $lat="";
+      $lng="";
+      $status="";
+      if($parameter=='ubah' && $id!=''){
+          $this->db->where('id_gunung',$id);
+          $row=$this->Model->get()->row_array();
+          extract($row);
+      }
+    ?>
+		<div class="container-fluid mt--6">
+
+
+			<div class="col-lg-12 grid-margin stretch-card">
+				<div class="card">
+					<div class="card-body">
+						<div class="card-header border-0"> 
+              <h3 class="mb-0">
+              <?=$title?>
+              </h3>
             </div>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-nav-right">
-            <!-- <li class="nav-item dropdown d-lg-flex d-none">
-                <button type="button" class="btn btn-info font-weight-bold">+ Create New</button>
-            </li> -->
-          <li class="nav-item dropdown d-flex mr-4 ">
-            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-cog"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
-              <a class="dropdown-item preview-item">               
-                  <i class="icon-head"></i> Profile
-              </a>
-              <a class="dropdown-item preview-item" href="<?php echo base_url(); ?>admin/logout">
-                  <i class="icon-inbox"></i> Logout
-              </a>
-            </div>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-          <span class="icon-menu"></span>
-        </button>
-      </div>
-    </nav>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
-      <?php $this->load->view('backend/sidebar') ?>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-sm-12 mb-4 mb-xl-0">
-              <h4 class="font-weight-bold text-dark"><?=$title?></h4>
-              <p class="font-weight-normal mb-2 text-muted">APRIL 1, 2019</p>
-            </div>
-          </div>
-          
-          <div class="row">
-              <div class="col-xl-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title"><?=$title?></h4>
-                    
-					<form method="post" action="<?=site_url($url.'/simpan')?>" enctype="multipart/form-data">
-        <?=input_hidden('parameter',$parameter)?>
-    	<?=input_hidden('id_gunung',$id_gunung)?>
-    	<div class="form-group">
-    		<label>Kode Gunung</label>
-    		<div class="row">
-	    		<div class="col-md-4">
-	    			<?=input_text('kd_gunung',$kd_gunung)?>
-		    	</div>
-	    	</div>
-    	</div>
-    	<div class="form-group">
-    		<label>Nama Gunung</label>
-    		<div class="row">
-	    		<div class="col-md-6">
-	    			<?=input_text('nm_gunung',$nm_gunung)?>
-	    		</div>
-    		</div>
-    	</div>
-		<div class="form-group">
-    		<label>Lokasi</label>
-    		<div class="row">
-	    		<div class="col-md-6">
-	    			<?=input_text('lokasi',$lokasi)?>
-	    		</div>
-    		</div>
-    	</div>
-		<div class="form-group">
-    		<label>Keterangan</label>
-    		<div class="row">
-	    		<div class="col-md-6">
-	    			<?=input_text('keterangan',$keterangan)?>
-	    		</div>
-    		</div>
-    	</div>
-		<div class="form-group">
-    		<label>Latitude</label>
-    		<div class="row">
-	    		<div class="col-md-6">
-	    			<?=input_text('lat',$lat)?>
-	    		</div>
-    		</div>
-    	</div>
-		<div class="form-group">
-    		<label>Longitude</label>
-    		<div class="row">
-	    		<div class="col-md-6">
-	    			<?=input_text('lng',$lng)?>
-	    		</div>
-    		</div>
-    	</div>
-		<div class="form-group">
-    		<label>Gambar Status</label>
-    		<div class="row">
-	    		<div class="col-md-4">
-    				<?=input_file('status','')?>
-					<?php if ($parameter=='ubah'): ?>
-                        <small class="text-success">Biarkan kosong jika tidak ingin diubah</small>
-                    <?php endif ?>
-    			</div>
-    		</div>
-    	</div>
-		<!-- <div class="form-group">
+						
+						<div class="card-content">
+              <div class="container-fluid">
+							<form id="add-user-form" method="post" action="<?=site_url($url.'/simpan')?>"
+								enctype="multipart/form-data">
+								<?=input_hidden('parameter',$parameter)?>
+								<?=input_hidden('id_gunung',$id_gunung)?>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label for="kode">Kode Gunung</label>
+										<?=input_text('kd_gunung',$kd_gunung)?>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="nama">Nama Gunung</label>
+										<?=input_text('nm_gunung',$nm_gunung)?>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="lokasi">Lokasi</label>
+										<?=input_text('lokasi',$lokasi)?>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="keterangan">Keterangan</label>
+										<?=input_text('keterangan',$keterangan)?>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="latitude">Latitude</label>
+										<?=input_text('lat',$lat)?>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="longtitude">Longtitude</label>
+										<?=input_text('lng',$lng)?>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="gambar">Gambar Status</label>
+										<?=input_file('status','')?>
+										<?php if ($parameter=='ubah'): ?>
+										<small class="text-success">Biarkan kosong jika tidak ingin diubah</small>
+										<?php endif ?>
+									</div>
+									<!-- <div class="form-group">
     		<label>Gambar Status</label>
     		<div class="row">
 	    		<div class="col-md-4">
@@ -164,19 +98,15 @@ if($parameter=='ubah' && $id!=''){
                         <small class="text-success">Biarkan kosong jika tidak ingin diubah</small>
                     <?php endif ?>
     			</div>
-    		</div> -->
-    	<div class="form-group">
-    		<label>GeoJSON</label>
-    		<div class="row">
-	    		<div class="col-md-4">
-    				<?=input_file('geojson_gunung',$geojson_gunung)?>
-                    <?php if ($parameter=='ubah'): ?>
-                        <small class="text-success">Biarkan kosong jika tidak ingin diubah</small>
-                    <?php endif ?>
-    			</div>
-    		</div>
-    	</div>
-    	<!-- <div class="form-group">
+        </div> -->
+									<div class="form-group col-md-12">
+										<label for="json">GeoJSON</label>
+										<?=input_file('geojson_gunung',$geojson_gunung)?>
+										<?php if ($parameter=='ubah'): ?>
+										<small class="text-success">Biarkan kosong jika tidak ingin diubah</small>
+										<?php endif ?>
+									</div>
+									<!-- <div class="form-group">
     		<label>Warna</label> 
     		<div class="row">
 	    		<div class="col-md-3">
@@ -184,31 +114,25 @@ if($parameter=='ubah' && $id!=''){
 	    		</div>
     		</div>
     	</div> -->
-    	<div class="form-group">
-    		<button type="submit" name="simpan" value="true" class="btn btn-info"><i class="fa fa-save"></i> Simpan</button>
-			<a href="<?=site_url($url)?>" class="btn btn-danger" ><i class="fa fa-reply"></i> Kembali</a>
-    	</div>
-    </form>
-                    
+
+								</div>
+								<div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+									<button type="submit" name="simpan" value="true" class="btn btn-info"><i class="fa fa-save"></i>
+										Simpan</button>
+									<a href="<?=site_url($url)?>" class="btn btn-danger"><i class="fa fa-reply"></i> Kembali</a>
                   </div>
-                </div>
-              </div>
-          </div>
-          </div>
-        </div>
-        <!-- content-wrapper ends -->
+								</div>
+						</div>
+            </form>
+            </div>
+					</div>
 
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-  
-
-  <?php $this->load->view('backend/footer') ?>
-
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php $this->load->view('backend/footer') ?>
 </body>
-
 </html>
-

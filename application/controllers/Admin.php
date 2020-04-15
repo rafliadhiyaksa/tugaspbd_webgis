@@ -15,8 +15,9 @@ class Admin extends CI_Controller {
 	{
 		// Menu
 		$datacontent['dashboard']='Dashboard';
-		$datacontent['accountdata']='Account Data';
-		$datacontent['geodata']='Geological Data';
+		$datacontent['accountdata']='Data Account';
+		$datacontent['mountdata']='Mountain Maps';
+		$datacontent['tabelgunung']='Data Maps';
 		// content
 		$data['content'] = $this->load->view('backend/content/beranda',$datacontent,TRUE);
 		$this->load->view('backend/index',$data);
@@ -26,6 +27,7 @@ class Admin extends CI_Controller {
 
 	public function data_akun() {
 		if($this->session->userdata('role') == 'admin'){
+			$datacontent['accountdata']='ACCOUNT DATA';
 			$datacontent['akun'] = $this->m_akun->get()->result();
 			
 			$data['content'] = $this->load->view('backend/content/v_userlist',$datacontent,TRUE);
